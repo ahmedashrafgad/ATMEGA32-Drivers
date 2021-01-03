@@ -1,0 +1,7 @@
+/*
+ * WatchGog.c
+ *
+ * Created: 12/22/2020 2:28:33 PM
+ *  Author: Ahmed Ashraf
+ */ 
+#include "WatchDog.h"void WDT_Set(TimeOut_type time){	u8 wdt_value=0x08;//WDE SET & WDTOE CLEARED//0b00001101	wdt_value|=time;	WDTCR |= (1<<WDTOE) | (1<<WDE);		WDTCR=wdt_value;}void WDT_Stop(void){		WDTCR=(1<<WDTOE)|(1<<WDE);	WDTCR=0;}
